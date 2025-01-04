@@ -78,7 +78,7 @@ Route::group(['namespace' => 'App\Http\Controllers\Category', 'prefix' => 'categ
     });  
 });  
 
-Route::group(['namespace' => 'App\Http\Controllers\Personal', 'prefix' => 'personal', 'middleware' => ['auth']], function(){ //'verified'
+Route::group(['namespace' => 'App\Http\Controllers\Personal', 'prefix' => 'personal', 'middleware' => ['auth', 'verified']], function(){ 
     Route::group(['namespace' => 'Main'], function(){
         Route::get('/', PersonalMainIndexController::class)->name('personal.main.index');
     });
@@ -94,7 +94,7 @@ Route::group(['namespace' => 'App\Http\Controllers\Personal', 'prefix' => 'perso
     });
 });
 
-Route::group(['namespace' => 'App\Http\Controllers\Admin', 'prefix' => 'admin', 'middleware' => ['auth', 'admin']], function(){ //'verified'
+Route::group(['namespace' => 'App\Http\Controllers\Admin', 'prefix' => 'admin', 'middleware' => ['auth', 'admin', 'verified']], function(){ 
     Route::group(['namespace' => 'Main'], function(){
         Route::get('/', MainIndexController::class)->name('admin.main.index');
     });
